@@ -1,26 +1,32 @@
 package hello.core;
 
 import hello.core.discount.Discountpolicy;
-import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.*;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class AppConfig {
-    public MemberService memberService(){
+    @Bean
+    public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
     }
 
-    private static MemberRepository memberRepository() {
+    @Bean
+    public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
-    public OrderService orderService(){
-        return new OrderServiceImpl(memberRepository(),discountPolicy());
+    @Bean
+    public OrderService orderService() {
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
-    public Discountpolicy discountPolicy(){
+    @Bean
+    public Discountpolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
 }
