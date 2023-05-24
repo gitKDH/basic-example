@@ -15,14 +15,14 @@ public class OrderServiceTest {
     OrderService orderService;
 
     @BeforeEach
-    public void beforeEach(){
+    public void beforeEach() {
         AppConfig appConfig = new AppConfig();
         memberService = appConfig.memberService();
         orderService = appConfig.orderService();
     }
 
     @Test
-    void createOrder(){
+    void createOrder() {
         long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);

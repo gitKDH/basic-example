@@ -13,7 +13,6 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final Discountpolicy discountpolicy;
 
-    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, Discountpolicy discountpolicy) {
         this.memberRepository = memberRepository;
         this.discountpolicy = discountpolicy;
